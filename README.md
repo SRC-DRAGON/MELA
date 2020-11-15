@@ -9,7 +9,7 @@
 
 # <p align="center"> كود تنصيب السورس ⌯︙
 
- # <p align="center" style="color:#cb3349" > ``git clone https://github.com/s00f4/SOFI ;cd SOFI;chmod +x install;./install``
+ # <p align="center" style="color:#cb3349" > ``git clone https://github.com/s00f4/MELA ;cd MELA;chmod +x install;./install``
 
 # <p align="center"> بعد انتهاء عمليه تثبيت السورس ⌯︙
 
