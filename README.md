@@ -1,15 +1,15 @@
 
-# S00F4
+# سورس بوت ميلا
 
-# <p align="center" style="color:#cb3349" >سورس صوفي و روظي اول على تلكرام ⌯︙
+# <p align="center" style="color:#cb3349" >سورس بوت ميلا فقط ⌯︙
 
-# <p align="center" style="color:#cb3349" > شروحات عن السورس ادخل الى قناة السورس
+# <p align="center" style="color:#cb3349" > مطورين سورس ميلا
 
-# <p align="center" style="color:#cb3349" > [اصـــغـــط هــنـــا لــلــدخــول الــى الــقــنــاة](https://telegram.me/s00f4) <br>
+# <p align="center" style="color:#cb3349" > [اصـــغـــط هــنـــا لــلــدخــول الــى الــقــنــاة](https://telegram.me/byroo9) <br>
 
 # <p align="center"> كود تنصيب السورس ⌯︙
 
- # <p align="center" style="color:#cb3349" > ``git clone https://github.com/s00f4/S00F4 ;cd S00F4;chmod +x install;./install``
+ # <p align="center" style="color:#cb3349" > ``git clone https://github.com/s00f4/SOFI ;cd SOFI;chmod +x install;./install``
 
 # <p align="center"> بعد انتهاء عمليه تثبيت السورس ⌯︙
 
@@ -29,4 +29,4 @@
 
   
 
-# <p align="center" style="color:#cb3349" > [كـــروب خــاص لــمـطـوريـن](https://telegram.me/s00f4) <br>
+# <p align="center" style="color:#cb3349" > [كـــروب مــــود](https://telegram.me/joinchat/APVPGU43ZnxKwJGnuBKDww) <br>
