@@ -34,7 +34,7 @@ end
 else
 print('\27[0;35m┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n لم يتم حفظ التوكن ارسل لي التوكن الان')
 end 
-os.execute('lua MELA.lua')
+os.execute('lua SNAP.lua')
 end
 if not database:get(id_server..":SUDO:ID") then
 io.write('\27[0;35m\n ارسل لي ايدي المطور الاساسي ↓ :\na┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n\27[0;33;49m')
@@ -45,7 +45,7 @@ database:set(id_server..":SUDO:ID",SUDOID)
 else
 print('\27[0;31m┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n لم يتم حفظ ايدي المطور الاساسي ارسله مره اخره')
 end 
-os.execute('lua MELA.lua')
+os.execute('lua SNAP.lua')
 end
 if not database:get(id_server..":SUDO:USERNAME") then
 io.write('\27[1;31m ↓ ارسل معرف المطور الاساسي :\n SEND ID FOR SIDO : \27[0;39;49m')
@@ -56,7 +56,7 @@ database:set(id_server..":SUDO:USERNAME",'@'..SUDOUSERNAME)
 else
 print('\n\27[1;34m لم يتم حفظ معرف المطور :')
 end 
-os.execute('lua MELA.lua')
+os.execute('lua SNAP.lua')
 end
 local create_config_auto = function()
 config = {
@@ -71,10 +71,10 @@ token = database:get(id_server..":token")
 SUDO = database:get(id_server..":SUDO:ID")
 install = io.popen("whoami"):read('*a'):gsub('[\n\r]+', '') 
 print('\n\27[1;34m doneeeeeeee senddddddddddddd :')
-file = io.open("MELA", "w")  
+file = io.open("SNAP", "w")  
 file:write([[
 #!/usr/bin/env bash
-cd $HOME/MELA
+cd $HOME/SNAP
 token="]]..database:get(id_server..":token")..[["
 while(true) do
 rm -fr ../.telegram-cli
@@ -94,18 +94,18 @@ echo -e "\033[38;5;208m"
 echo -e "                                                  "
 echo -e "\033[0;00m"
 echo -e "\e[36m"
-./tg -s ./MELA.lua -p PROFILE --bot=$token
+./tg -s ./SNAP.lua -p PROFILE --bot=$token
 done
 ]])  
 file:close()  
 file = io.open("BK", "w")  
 file:write([[
 #!/usr/bin/env bash
-cd $HOME/MELA
+cd $HOME/SNAP
 while(true) do
 rm -fr ../.telegram-cli
-screen -S MELA -X kill
-screen -S MELA ./MELA
+screen -S SNAP -X kill
+screen -S SNAP ./SNAP
 done
 ]])  
 file:close() 
@@ -174,13 +174,13 @@ print(serpent.block(value, {comment=false}))
 end 
 sudo_users = {SUDO,119541395,16076569}   
 function SudoBot(msg)  
-local MELA = false  
+local SNAP = false  
 for k,v in pairs(sudo_users) do  
 if tonumber(msg.sender_user_id_) == tonumber(v) then  
-MELA = true  
+SNAP = true  
 end  
 end  
-return MELA  
+return SNAP  
 end 
 function Sudo(msg) 
 local hash = database:sismember(bot_id..'Sudo:User', msg.sender_user_id_) 
@@ -435,35 +435,35 @@ local function sendPhoto(chat_id, reply_to_message_id, disable_notification, fro
 tdcli_function ({ ID = "SendMessage",   chat_id_ = chat_id,   reply_to_message_id_ = reply_to_message_id,   disable_notification_ = disable_notification,   from_background_ = from_background,   reply_markup_ = reply_markup,   input_message_content_ = {   ID = "InputMessagePhoto",   photo_ = getInputFile(photo),   added_sticker_file_ids_ = {},   width_ = 0,   height_ = 0,   caption_ = caption  },   }, dl_cb, nil)  
 end
 function Total_Msg(msgs)  
-local MELA_Msg = ''  
+local SNAP_Msg = ''  
 if msgs < 100 then 
-MELA_Msg = 'غير متفاعل' 
+SNAP_Msg = 'غير متفاعل' 
 elseif msgs < 200 then 
-MELA_Msg = 'بده يتحسن' 
+SNAP_Msg = 'بده يتحسن' 
 elseif msgs < 400 then 
-MELA_Msg = 'شبه متفاعل' 
+SNAP_Msg = 'شبه متفاعل' 
 elseif msgs < 700 then 
-MELA_Msg = 'متفاعل' 
+SNAP_Msg = 'متفاعل' 
 elseif msgs < 1200 then 
-MELA_Msg = 'متفاعل قوي' 
+SNAP_Msg = 'متفاعل قوي' 
 elseif msgs < 2000 then 
-MELA_Msg = 'متفاعل جدا' 
+SNAP_Msg = 'متفاعل جدا' 
 elseif msgs < 3500 then 
-MELA_Msg = 'اقوى تفاعل'  
+SNAP_Msg = 'اقوى تفاعل'  
 elseif msgs < 4000 then 
-MELA_Msg = 'متفاعل نار' 
+SNAP_Msg = 'متفاعل نار' 
 elseif msgs < 4500 then 
-MELA_Msg = 'قمة التفاعل'
+SNAP_Msg = 'قمة التفاعل'
 elseif msgs < 5500 then 
-MELA_Msg = 'اقوى متفاعل' 
+SNAP_Msg = 'اقوى متفاعل' 
 elseif msgs < 7000 then 
-MELA_Msg = 'ملك التفاعل' 
+SNAP_Msg = 'ملك التفاعل' 
 elseif msgs < 9500 then 
-MELA_Msg = 'امبروطور التفاعل' 
+SNAP_Msg = 'امبروطور التفاعل' 
 elseif msgs < 10000000000 then 
-MELA_Msg = 'رب التفاعل'  
+SNAP_Msg = 'رب التفاعل'  
 end 
-return MELA_Msg 
+return SNAP_Msg 
 end
 function Get_Info(msg,chat,user) 
 local Chek_Info = https.request('https://api.telegram.org/bot'..token..'/getChatMember?chat_id='.. chat ..'&user_id='.. user..'')
@@ -517,16 +517,16 @@ function GetFile_Bot(msg)
 local list = database:smembers(bot_id..'Chek:Groups') 
 local t = '{"BOT_ID": '..bot_id..',"GP_BOT":{'  
 for k,v in pairs(list) do   
-NAME = 'MELA Chat'
+NAME = 'SNAP Chat'
 link = database:get(bot_id.."Private:Group:Link"..msg.chat_id_) or ''
 ASAS = database:smembers(bot_id..'Basic:Constructor'..v)
 MNSH = database:smembers(bot_id..'Constructor'..v)
 MDER = database:smembers(bot_id..'Manager'..v)
 MOD = database:smembers(bot_id..'Mod:User'..v)
 if k == 1 then
-t = t..'"'..v..'":{"MELA":"'..NAME..'",'
+t = t..'"'..v..'":{"SNAP":"'..NAME..'",'
 else
-t = t..',"'..v..'":{"MELA":"'..NAME..'",'
+t = t..',"'..v..'":{"SNAP":"'..NAME..'",'
 end
 if #ASAS ~= 0 then 
 t = t..'"ASAS":['
@@ -724,7 +724,7 @@ send(msg.chat_id_, msg.id_,pre_msg)
 end
 
 --------------------------------------------------------------------------------------------------------------
-function SourceMELA(msg,data) -- بداية العمل
+function SourceSNAP(msg,data) -- بداية العمل
 if msg then
 local text = msg.content_.text_
 --------------------------------------------------------------------------------------------------------------
@@ -814,11 +814,11 @@ else
 if not database:get(bot_id..'Start:Time'..msg.sender_user_id_) then
 local start = database:get(bot_id.."Start:Bot")  
 if start then 
-SourceMELAr = start
+SourceSNAPr = start
 else
-SourceMELAr = ' ✹∫ اهلا عزيزي\n ✹∫ انا بوت اسمي ' ..Namebot..'\n ✹∫ اختصاصي حمايه الكروبات\n ✹∫ من تكرار والسبام والتوجيه والخ…\n ✹∫ لتفعيلي اتبع الاخطوات…↓\n ✹∫ اضفني الي مجموعتك وقم بترقيتي ادمن واكتب كلمه { تفعيل }  ويستطيع »{ منشئ او المشرفين } بتفعيل فقط\n[ ✹∫ معرف المطور ['..UserName..']'
+SourceSNAPr = ' ✹∫ اهلا عزيزي\n ✹∫ انا بوت اسمي ' ..Namebot..'\n ✹∫ اختصاصي حمايه الكروبات\n ✹∫ من تكرار والسبام والتوجيه والخ…\n ✹∫ لتفعيلي اتبع الاخطوات…↓\n ✹∫ اضفني الي مجموعتك وقم بترقيتي ادمن واكتب كلمه { تفعيل }  ويستطيع »{ منشئ او المشرفين } بتفعيل فقط\n[ ✹∫ معرف المطور ['..UserName..']'
 end 
-send(msg.chat_id_, msg.id_, SourceMELAr) 
+send(msg.chat_id_, msg.id_, SourceSNAPr) 
 end
 end
 database:setex(bot_id..'Start:Time'..msg.sender_user_id_,300,true)
@@ -861,8 +861,8 @@ end
 tdcli_function({ID='GetChat',chat_id_ = id_user},function(arg,dataq)
 tdcli_function ({ ID = "SendChatAction",chat_id_ = id_user, action_ = {  ID = "SendMessageTypingAction", progress_ = 100} },function(arg,ta) 
 if ta.code_ == 400 or ta.code_ == 5 then
-local MELA_Msg = '\n ✹∫ قام الشخص بحظر البوت'
-send(msg.chat_id_, msg.id_,MELA_Msg) 
+local SNAP_Msg = '\n ✹∫ قام الشخص بحظر البوت'
+send(msg.chat_id_, msg.id_,SNAP_Msg) 
 return false  
 end 
 if text then    
@@ -1164,19 +1164,19 @@ if #group == i then
 if (w + q) == 0 then
 send(msg.chat_id_, msg.id_,'✹∫ لا يوجد كروبات وهميه في البوت\n')   
 else
-local MELA = (w + q)
-local sendok = #group - MELA
+local SNAP = (w + q)
+local sendok = #group - SNAP
 if q == 0 then
-MELA = ''
+SNAP = ''
 else
-MELA = '\n✹∫ تم ازالة » { '..q..' } كروبات من البوت'
+SNAP = '\n✹∫ تم ازالة » { '..q..' } كروبات من البوت'
 end
 if w == 0 then
-MELAk = ''
+SNAPk = ''
 else
-MELAk = '\n✹∫ تم ازالة » {'..w..'} كروب لان البوت عضو'
+SNAPk = '\n✹∫ تم ازالة » {'..w..'} كروب لان البوت عضو'
 end
-send(msg.chat_id_, msg.id_,'✹∫  عدد الكروبات الان » { '..#group..' }'..MELAk..''..MELA..'\n✹∫  الان عدد الكروبات الحقيقي » { '..sendok..' } كروبات\n')   
+send(msg.chat_id_, msg.id_,'✹∫  عدد الكروبات الان » { '..#group..' }'..SNAPk..''..SNAP..'\n✹∫  الان عدد الكروبات الحقيقي » { '..sendok..' } كروبات\n')   
 end
 end
 end,nil)
@@ -1291,10 +1291,10 @@ end
 end
 --------------------------------------------------------------------------------------------------------------
 if text and not Special(msg) then  
-local MELA1_Msg = database:get(bot_id.."MELA1:Add:Filter:Rp2"..text..msg.chat_id_)   
-if MELA1_Msg then 
+local SNAP1_Msg = database:get(bot_id.."SNAP1:Add:Filter:Rp2"..text..msg.chat_id_)   
+if SNAP1_Msg then 
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
-send(msg.chat_id_, msg.id_,' ✹∫ العضو » ['..Rutba(msg.sender_user_id_,msg.chat_id_)..'](T.ME/'..(data.username_ or 'byroo9')..') \n ✹∫ '..MELA1_Msg)
+send(msg.chat_id_, msg.id_,' ✹∫ العضو » ['..Rutba(msg.sender_user_id_,msg.chat_id_)..'](T.ME/'..(data.username_ or 'byroo9')..') \n ✹∫ '..SNAP1_Msg)
 DeleteMessage(msg.chat_id_, {[0] = msg.id_})     
 return false
 end,nil)
@@ -1539,14 +1539,14 @@ return false
 end
 end 
 --------------------------------------------------------------------------------------------------------------
-if MELA_Msg and not Special(msg) then  
-local MELA_Msg = database:get(bot_id.."Add:Filter:Rp2"..text..msg.chat_id_)   
-if MELA_Msg then    
+if SNAP_Msg and not Special(msg) then  
+local SNAP_Msg = database:get(bot_id.."Add:Filter:Rp2"..text..msg.chat_id_)   
+if SNAP_Msg then    
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 if data.username_ ~= false then
-send(msg.chat_id_,0," ✹∫ العضو : {["..data.first_name_.."](T.ME/"..data.username_..")}\n ✹∫ ["..MELA_Msg.."] \n")
+send(msg.chat_id_,0," ✹∫ العضو : {["..data.first_name_.."](T.ME/"..data.username_..")}\n ✹∫ ["..SNAP_Msg.."] \n")
 else
-send(msg.chat_id_,0," ✹∫ العضو : {["..data.first_name_.."](T.ME/byroo9)}\n ✹∫ ["..MELA_Msg.."] \n")
+send(msg.chat_id_,0," ✹∫ العضو : {["..data.first_name_.."](T.ME/byroo9)}\n ✹∫ ["..SNAP_Msg.."] \n")
 end
 end,nil)   
 DeleteMessage(msg.chat_id_, {[0] = msg.id_})     
@@ -2280,7 +2280,7 @@ end
 if text == 'السورس' or text == 'سورس' or text == 'يا سورس' then
 Text = [[
  ≪━━━━━━━━━━━━━≫
- ✹∫ ↬MELA-SOFI-ROZY
+ ✹∫ ↬SNAP-SOFI-ROZY
  ≪━━━━━━━━━━━━━≫
  ✹∫ ↬[DEVELOPER-SOFI](t.me/s00f4)
  ≪━━━━━━━━━━━━━≫
@@ -3039,7 +3039,7 @@ send(msg.chat_id_, msg.id_,' ✹∫ تم فتح التكرار')
 end
 --------------------------------------------------------------------------------------------------------------
 if text == 'تحديث' and SudoBot(msg) then    
-dofile('MELA.lua')
+dofile('SNAP.lua')
 send(msg.chat_id_, msg.id_, ' ✹∫ تم تحديث جميع الملفات') 
 end 
 if text == ("مسح قائمه العام") and SudoBot(msg) then
@@ -7139,42 +7139,42 @@ end
 end
 if text and text == "منع" and msg.reply_to_message_id_ == 0 and Manager(msg)  then       
 send(msg.chat_id_, msg.id_," ✹∫ ارسل الكلمه لمنعها")  
-database:set(bot_id.."MELA1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_,"rep")  
+database:set(bot_id.."SNAP1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_,"rep")  
 return false  
 end    
 if text then   
-local tsssst = database:get(bot_id.."MELA1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_)  
+local tsssst = database:get(bot_id.."SNAP1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_)  
 if tsssst == "rep" then   
 send(msg.chat_id_, msg.id_," ✹∫ ارسل التحذير عند ارسال الكلمه")  
-database:set(bot_id.."MELA1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_,"repp")  
-database:set(bot_id.."MELA1:filtr1:add:reply2"..msg.sender_user_id_..msg.chat_id_, text)  
-database:sadd(bot_id.."MELA1:List:Filter"..msg.chat_id_,text)  
+database:set(bot_id.."SNAP1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_,"repp")  
+database:set(bot_id.."SNAP1:filtr1:add:reply2"..msg.sender_user_id_..msg.chat_id_, text)  
+database:sadd(bot_id.."SNAP1:List:Filter"..msg.chat_id_,text)  
 return false  end  
 end
 if text then  
-local test = database:get(bot_id.."MELA1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_)  
+local test = database:get(bot_id.."SNAP1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_)  
 if test == "repp" then  
 send(msg.chat_id_, msg.id_," ✹∫ تم منع الكلمه مع التحذير")  
-database:del(bot_id.."MELA1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_)  
-local test = database:get(bot_id.."MELA1:filtr1:add:reply2"..msg.sender_user_id_..msg.chat_id_)  
+database:del(bot_id.."SNAP1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_)  
+local test = database:get(bot_id.."SNAP1:filtr1:add:reply2"..msg.sender_user_id_..msg.chat_id_)  
 if text then   
-database:set(bot_id.."MELA1:Add:Filter:Rp2"..test..msg.chat_id_, text)  
+database:set(bot_id.."SNAP1:Add:Filter:Rp2"..test..msg.chat_id_, text)  
 end  
-database:del(bot_id.."MELA1:filtr1:add:reply2"..msg.sender_user_id_..msg.chat_id_)  
+database:del(bot_id.."SNAP1:filtr1:add:reply2"..msg.sender_user_id_..msg.chat_id_)  
 return false  end  
 end
 
 if text == "الغاء منع" and msg.reply_to_message_id_ == 0 and Manager(msg) then    
 send(msg.chat_id_, msg.id_," ✹∫ ارسل الكلمه الان")  
-database:set(bot_id.."MELA1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_,"reppp")  
+database:set(bot_id.."SNAP1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_,"reppp")  
 return false  end
 if text then 
-local test = database:get(bot_id.."MELA1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_)  
+local test = database:get(bot_id.."SNAP1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_)  
 if test and test == "reppp" then   
 send(msg.chat_id_, msg.id_," ✹∫ تم الغاء منعها")  
-database:del(bot_id.."MELA1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_)  
-database:del(bot_id.."MELA1:Add:Filter:Rp2"..text..msg.chat_id_)  
-database:srem(bot_id.."MELA1:List:Filter"..msg.chat_id_,text)  
+database:del(bot_id.."SNAP1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_)  
+database:del(bot_id.."SNAP1:Add:Filter:Rp2"..text..msg.chat_id_)  
+database:srem(bot_id.."SNAP1:List:Filter"..msg.chat_id_,text)  
 return false  end  
 end
 
@@ -7235,21 +7235,21 @@ tdcli_function ({ ID = "GetMessage", chat_id_ = msg.chat_id_, message_id_ = tonu
 end
 
 if text == "مسح قائمه المنع"and Manager(msg) then   
-local list = database:smembers(bot_id.."MELA1:List:Filter"..msg.chat_id_)  
+local list = database:smembers(bot_id.."SNAP1:List:Filter"..msg.chat_id_)  
 for k,v in pairs(list) do  
-database:del(bot_id.."MELA1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_)  
-database:del(bot_id.."MELA1:Add:Filter:Rp2"..v..msg.chat_id_)  
-database:srem(bot_id.."MELA1:List:Filter"..msg.chat_id_,v)  
+database:del(bot_id.."SNAP1:Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_)  
+database:del(bot_id.."SNAP1:Add:Filter:Rp2"..v..msg.chat_id_)  
+database:srem(bot_id.."SNAP1:List:Filter"..msg.chat_id_,v)  
 end  
 send(msg.chat_id_, msg.id_," ✹∫ تم مسح قائمه المنع")  
 end
 
 if text == "قائمه المنع" and Manager(msg) then   
-local list = database:smembers(bot_id.."MELA1:List:Filter"..msg.chat_id_)  
+local list = database:smembers(bot_id.."SNAP1:List:Filter"..msg.chat_id_)  
 t = "\n ✹∫ قائمة المنع \n≪━━━━━━━━━━━━━≫\n"
 for k,v in pairs(list) do  
-local MELA_Msg = database:get(bot_id.."MELA1:Add:Filter:Rp2"..v..msg.chat_id_)   
-t = t..""..k.."- "..v.." » {"..MELA_Msg.."}\n"    
+local SNAP_Msg = database:get(bot_id.."SNAP1:Add:Filter:Rp2"..v..msg.chat_id_)   
+t = t..""..k.."- "..v.." » {"..SNAP_Msg.."}\n"    
 end  
 if #list == 0 then  
 t = " ✹∫ لا يوجد كلمات ممنوعه"  
@@ -7403,9 +7403,9 @@ if result.members_[i].status_.ID == "ChatMemberStatusMember" then
 tr = ''
 elseif result.members_[i].status_.ID == "ChatMemberStatusEditor" then  
 t = t + 1
-tr = ' {★}'
+tr = ' {★}'
 end
-text = text..">> [@"..ta.username_..']'..tr.."\n"
+text = text..">> [@"..ta.username_..']'..tr.."\n"
 if #admins == 0 then
 send(msg.chat_id_, msg.id_, " ✹∫ لا توجد بوتات في الكروب")
 return false 
@@ -7888,7 +7888,7 @@ end
 
 if text == ""..(database:get(bot_id..'Name:Bot') or 'ميلا').."" then  
 Namebot = (database:get(bot_id..'Name:Bot') or 'ميلا')
-local MELA_Msg = {
+local SNAP_Msg = {
 'عمغي 🥺💕.',
 'ياروحي كول اني  '..Namebot..'',
 'شتريد من '..Namebot..'',
@@ -7903,7 +7903,7 @@ local MELA_Msg = {
 'مشغوله حالياً',
 'عمري فداك '..Namebot..' كول حب'
 }
-send(msg.chat_id_, msg.id_,'['..MELA_Msg[math.random(#MELA_Msg)]..']') 
+send(msg.chat_id_, msg.id_,'['..SNAP_Msg[math.random(#SNAP_Msg)]..']') 
 return false
 end
 if text=="اذاعه خاص" and msg.reply_to_message_id_ == 0 and Sudo(msg) then 
@@ -8012,10 +8012,10 @@ end
 return false
 end
 tdcli_function({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub('-100',''), offset_ = 0,limit_ = 200
-},function(ta,MELA)
+},function(ta,SNAP)
 local t = "\nツ قائمة الاعضاء \n≪━━━━━━━━━━━━━≫\n"
 x = 0
-local list = MELA.members_
+local list = SNAP.members_
 for k, v in pairs(list) do
 x = x + 1
 if database:get(bot_id..'user:Name'..v.user_id_) then
@@ -9235,19 +9235,19 @@ if #group == i then
 if (w + q) == 0 then
 send(msg.chat_id_, msg.id_,' ✹∫  لا يوجد كروبات وهميه في البوت\n')   
 else
-local MELA = (w + q)
-local sendok = #group - MELA
+local SNAP = (w + q)
+local sendok = #group - SNAP
 if q == 0 then
-MELA = ''
+SNAP = ''
 else
-MELA = '\n- تم ازالة » { '..q..' } كروبات من البوت'
+SNAP = '\n- تم ازالة » { '..q..' } كروبات من البوت'
 end
 if w == 0 then
-MELAk = ''
+SNAPk = ''
 else
-MELAk = '\n- تم ازالة » {'..w..'} كروب لان البوت عضو'
+SNAPk = '\n- تم ازالة » {'..w..'} كروب لان البوت عضو'
 end
-send(msg.chat_id_, msg.id_,' ✹∫ عدد الكروبات الان » { '..#group..' }'..MELAk..''..MELA..'\n*- الان عدد الكروبات الحقيقي » { '..sendok..' } كروبات\n')   
+send(msg.chat_id_, msg.id_,' ✹∫ عدد الكروبات الان » { '..#group..' }'..SNAPk..''..SNAP..'\n*- الان عدد الكروبات الحقيقي » { '..sendok..' } كروبات\n')   
 end
 end
 end,nil)
@@ -9258,7 +9258,7 @@ end
 if text and text:match("^(gpinfo)$") or text and text:match("^معلومات الكروب$") then
 function gpinfo(arg,data)
 -- vardump(data) 
-MELAdx(msg.chat_id_, msg.id_, ' ✹∫ ايدي المجموعة » ( '..msg.chat_id_..' )\n ✹∫ عدد الادمنيه » ( *'..data.administrator_count_..' )*\n ✹∫ عدد المحظورين » ( *'..data.kicked_count_..' )*\n ✹∫ عدد الاعضاء » ( *'..data.member_count_..' )*\n', 'md') 
+SNAPdx(msg.chat_id_, msg.id_, ' ✹∫ ايدي المجموعة » ( '..msg.chat_id_..' )\n ✹∫ عدد الادمنيه » ( *'..data.administrator_count_..' )*\n ✹∫ عدد المحظورين » ( *'..data.kicked_count_..' )*\n ✹∫ عدد الاعضاء » ( *'..data.member_count_..' )*\n', 'md') 
 end 
 getChannelFull(msg.chat_id_, gpinfo, nil) 
 end
@@ -9923,8 +9923,8 @@ local Bots = database:get(bot_id.."lock:Bot:kick"..msg.chat_id_)
 for i=0,#mem_id do  
 if msg.content_.members_[i].type_.ID == "UserTypeBot" and not Mod(msg) and Bots == "kick" then   
 https.request("https://api.telegram.org/bot"..token.."/kickChatMember?chat_id="..msg.chat_id_.."&user_id="..msg.sender_user_id_)
-MELA = https.request("https://api.telegram.org/bot"..token.."/kickChatMember?chat_id="..msg.chat_id_.."&user_id="..mem_id[i].id_)
-local Json_Info = JSON.decode(MELA)
+SNAP = https.request("https://api.telegram.org/bot"..token.."/kickChatMember?chat_id="..msg.chat_id_.."&user_id="..mem_id[i].id_)
+local Json_Info = JSON.decode(SNAP)
 if Json_Info.ok == true and #mem_id == i then
 local Msgs = {}
 Msgs[0] = msg.id_
@@ -9945,8 +9945,8 @@ local mem_id = msg.content_.members_
 local Bots = database:get(bot_id.."lock:Bot:kick"..msg.chat_id_) 
 for i=0,#mem_id do  
 if msg.content_.members_[i].type_.ID == "UserTypeBot" and not Mod(msg) and Bots == "del" then   
-MELA = https.request("https://api.telegram.org/bot"..token.."/kickChatMember?chat_id="..msg.chat_id_.."&user_id="..mem_id[i].id_)
-local Json_Info = JSON.decode(MELA)
+SNAP = https.request("https://api.telegram.org/bot"..token.."/kickChatMember?chat_id="..msg.chat_id_.."&user_id="..mem_id[i].id_)
+local Json_Info = JSON.decode(SNAP)
 if Json_Info.ok == true and #mem_id == i then
 local Msgs = {}
 Msgs[0] = msg.id_
@@ -9979,7 +9979,7 @@ return false
 end    
 end   
 --------------------------------------------------------------------------------------------------------------
-SourceMELA(data.message_,data)
+SourceSNAP(data.message_,data)
 plugin_Poyka(data.message_)
 --------------------------------------------------------------------------------------------------------------
 if Chat_Type == 'GroupBot' and ChekAdd(msg.chat_id_) == true then
@@ -10087,13 +10087,13 @@ return false
 end  
 end 
 ------------------------------------------------------------------------
-local MELAAbot = database:get(bot_id.."MELA1:Add:Filter:Rp2"..text..result.chat_id_)   
-if MELAAbot then    
+local SNAPAbot = database:get(bot_id.."SNAP1:Add:Filter:Rp2"..text..result.chat_id_)   
+if SNAPAbot then    
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 if data.username_ ~= false then
-send(msg.chat_id_,0," ✹∫ العضو : {["..data.first_name_.."](T.ME/"..data.username_..")}\n ✹∫ ["..MELAAbot.."] \n") 
+send(msg.chat_id_,0," ✹∫ العضو : {["..data.first_name_.."](T.ME/"..data.username_..")}\n ✹∫ ["..SNAPAbot.."] \n") 
 else
-send(msg.chat_id_,0," ✹∫ العضو : {["..data.first_name_.."](T.ME/byroo9)}\n ✹∫ ["..MELAAbot.."] \n") 
+send(msg.chat_id_,0," ✹∫ العضو : {["..data.first_name_.."](T.ME/byroo9)}\n ✹∫ ["..SNAPAbot.."] \n") 
 end
 end,nil)   
 DeleteMessage(msg.chat_id_,{[0] = data.message_id_}) 
@@ -10114,9 +10114,9 @@ end
 end
 ------------------------------------------------------------------------
 if text then
-local MELA1_Msg = database:get(bot_id.."MELA1:Add:Filter:Rp2"..text..result.chat_id_)   
-if MELA1_Msg then    
-send(msg.chat_id_, msg.id_," ✹∫ "..MELA1_Msg)
+local SNAP1_Msg = database:get(bot_id.."SNAP1:Add:Filter:Rp2"..text..result.chat_id_)   
+if SNAP1_Msg then    
+send(msg.chat_id_, msg.id_," ✹∫ "..SNAP1_Msg)
 DeleteMessage(result.chat_id_, {[0] = data.message_id_})     
 return false
 end
@@ -10192,7 +10192,6 @@ end
 
 end -- end new msg
 end -- end callback
-
 
 
 
